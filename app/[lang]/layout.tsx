@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Syne } from "next/font/google";
 import "../globals.css";
-import SmoothScroll from "@/providers/smooth-scroll-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { LanguageProvider } from "@/providers/language-provider";
 import { Preloader } from "@/components/layout/preloader";
@@ -15,8 +14,8 @@ const syne = Syne({ subsets: ["latin"], variable: "--font-syne" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Kintarowwwards",
-  description: "Creative Developer Portfolio",
+  title: "İlker Solmaz",
+  description: "İlker Solmaz - Kişisel Web Sayfası",
 };
 
 export function generateStaticParams() {
@@ -53,10 +52,8 @@ export default async function LangLayout({
           >
             <CustomCursor />
             <Preloader />
-            <SmoothScroll>
-              <Navbar />
-              {children}
-            </SmoothScroll>
+            <Navbar />
+            {children}
           </ThemeProvider>
         </LanguageProvider>
       </body>

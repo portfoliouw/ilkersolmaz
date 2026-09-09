@@ -8,7 +8,6 @@ import {
 
 import { useLanguage } from "@/providers/language-provider";
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
-import { useLenisModal } from "@/hooks/use-lenis-modal";
 import { sanitizePhone } from "@/lib/utils";
 import { ShineButton } from "@/components/ui/shine-button";
 
@@ -19,7 +18,6 @@ interface ContactModalProps {
 
 export function ContactModal({ open, onOpenChange }: ContactModalProps) {
     const { content, dict } = useLanguage();
-    useLenisModal(open);
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
@@ -40,11 +38,11 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
                     </DialogHeader>
                 </div>
 
-                <div className="overflow-y-auto px-8 pb-8 pt-2 flex-1" data-lenis-prevent="true">
+                <div className="overflow-y-auto px-8 pb-8 pt-2 flex-1">
                     <div className="flex flex-col sm:flex-row flex-wrap gap-4 mt-2">
                         <a
                             href={`mailto:${content.contact.email}`}
-                            className="group flex items-center gap-4 px-5 py-2.5 rounded-full border border-border/50 bg-secondary/20 backdrop-blur-sm hover:bg-foreground hover:border-foreground/30 transition-all duration-500 ease-out"
+                            className="group w-fit flex items-center gap-4 px-5 py-2.5 rounded-full border border-border/50 bg-secondary/20 backdrop-blur-sm hover:bg-foreground hover:border-foreground/30 transition-all duration-500 ease-out"
                         >
                             <div className="w-8 h-8 rounded-full border border-border/50 bg-background flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-background transition-transform duration-500">
                                 <Mail className="w-3.5 h-3.5 text-foreground" />
@@ -56,7 +54,7 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
 
                         <a
                             href={`tel:${sanitizePhone(content.contact.phone)}`}
-                            className="group flex items-center gap-4 px-5 py-2.5 rounded-full border border-border/50 bg-secondary/20 backdrop-blur-sm hover:bg-foreground hover:border-foreground/30 transition-all duration-500 ease-out"
+                            className="group w-fit flex items-center gap-4 px-5 py-2.5 rounded-full border border-border/50 bg-secondary/20 backdrop-blur-sm hover:bg-foreground hover:border-foreground/30 transition-all duration-500 ease-out"
                         >
                             <div className="w-8 h-8 rounded-full border border-border/50 bg-background flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-background transition-transform duration-500">
                                 <Phone className="w-3.5 h-3.5 text-foreground" />

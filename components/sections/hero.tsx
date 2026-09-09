@@ -1,29 +1,30 @@
 "use client";
 
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
-import { useScroll, useTransform, useMotionTemplate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/providers/language-provider";
-import { ArrowRight, Mouse } from "lucide-react";
+import { ArrowRight, User } from "lucide-react";
 import { ContactModal } from "@/components/modals/contact-modal";
+import { AboutModal } from "@/components/modals/about-modal";
 import { InteractiveParticles } from "@/components/effects/interactive-particles";
 
 const TRACK_1 = [
-    "/hero-slider/makise-kurisu-2.webp",
-    "/hero-slider/atam-1.webp",
-    "/hero-slider/kintaro-2.webp",
-    "/hero-slider/makise-kurisu-1.webp",
-    "/hero-slider/atam-2.webp",
-    "/hero-slider/kintaro-1.webp",
+    "/hero-slider/abdulhamit-1.webp",
+    "/hero-slider/fsm-1.webp",
+    "/hero-slider/cyrus-2.webp",
+    "/hero-slider/osmanli-1.webp",
+    "/hero-slider/fsm-2.webp",
+    "/hero-slider/cyrus-1.webp",
 ] as const;
 
 const TRACK_2 = [
-    "/hero-slider/kintaro-1.webp",
-    "/hero-slider/atam-2.webp",
-    "/hero-slider/makise-kurisu-1.webp",
-    "/hero-slider/kintaro-2.webp",
-    "/hero-slider/atam-1.webp",
-    "/hero-slider/makise-kurisu-2.webp",
+    "/hero-slider/cyrus-1.webp",
+    "/hero-slider/fsm-2.webp",
+    "/hero-slider/osmanli-1.webp",
+    "/hero-slider/cyrus-2.webp",
+    "/hero-slider/fsm-1.webp",
+    "/hero-slider/abdulhamit-1.webp",
 ] as const;
 
 const COL_1_IMAGES = [...TRACK_1, ...TRACK_1];
@@ -33,33 +34,17 @@ export default function Hero() {
     const { content, dict } = useLanguage();
     const containerRef = useRef<HTMLDivElement>(null);
     const [contactOpen, setContactOpen] = useState(false);
-
-    const { scrollY } = useScroll();
-    const opacity = useTransform(scrollY, [0, 800], [1, 0]);
-    const scale = useTransform(scrollY, [0, 800], [1, 0.94]);
-    const y = useTransform(scrollY, [0, 800], [0, -150]);
-    const blurValue = useTransform(scrollY, [0, 800], [0, 10]);
-    const filter = useMotionTemplate`blur(${blurValue}px)`;
-
-    const scrollToProjects = useCallback(() => {
-        const projectsSection = document.getElementById("projects");
-        if (projectsSection) {
-            projectsSection.scrollIntoView({ behavior: "smooth" });
-        }
-    }, []);
+    const [aboutOpen, setAboutOpen] = useState(false);
 
     return (
         <section
             ref={containerRef}
-            className="sticky top-0 h-screen w-full flex flex-col justify-between bg-background px-container md:px-16 pt-28 pb-12 sm:pt-32 sm:pb-16 2xl:pb-24 overflow-hidden"
+            className="h-screen w-full flex flex-col justify-between bg-background px-container md:px-16 pt-28 pb-12 sm:pt-32 sm:pb-16 2xl:pb-24 overflow-hidden relative"
             id="home"
         >
             <InteractiveParticles />
 
-            <motion.div
-                style={{ opacity }}
-                className="absolute top-0 right-6 sm:right-12 md:right-16 lg:right-24 xl:right-36 2xl:right-48 bottom-0 h-full w-55 sm:w-65 md:w-85 lg:w-100 xl:w-110 2xl:w-120 flex gap-3 sm:gap-4 px-2 overflow-hidden z-5 pointer-events-none select-none opacity-[0.22] dark:opacity-[0.28] mix-blend-luminosity"
-            >
+            <div className="absolute top-0 right-6 sm:right-12 md:right-16 lg:right-24 xl:right-36 2xl:right-48 bottom-0 h-full w-55 sm:w-65 md:w-85 lg:w-100 xl:w-110 2xl:w-120 flex gap-3 sm:gap-4 px-2 overflow-hidden z-5 pointer-events-none select-none opacity-100 dark:opacity-[0.8] mix-blend-luminosity">
                 <div className="max-md:hidden flex-1 h-full overflow-hidden relative">
                     <motion.div
                         animate={{ y: ["0%", "-50%"] }}
@@ -112,46 +97,17 @@ export default function Hero() {
 
                 <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-background pointer-events-none z-10" />
                 <div className="absolute inset-0 bg-linear-to-r from-background via-transparent to-transparent pointer-events-none z-10" />
-            </motion.div>
+            </div>
 
-            <motion.div
-                style={{ opacity, scale, y, filter }}
-                className="relative z-20 flex-1 flex flex-col gap-6 sm:gap-8 xl:gap-12 justify-end w-full h-full will-change-[opacity,transform,filter]"
-            >
-
-                <div className="flex justify-between items-start w-full">
-
-                    <div className="text-4xl sm:text-6xl text-foreground/10 grunge-text rotate-90 pointer-events-none select-none">
-                        {"////"}
-                    </div>
-
-                    <div className="flex flex-col items-center gap-4">
-                        <div className="w-px h-12 bg-border relative overflow-hidden">
-                            <motion.div
-                                className="absolute top-0 left-0 w-full h-1/2 bg-foreground"
-                                animate={{
-                                    y: ["0%", "100%", "0%"]
-                                }}
-                                transition={{
-                                    duration: 2.5,
-                                    repeat: Infinity,
-                                    ease: "easeInOut"
-                                }}
-                            />
-                        </div>
-                        <span className="text-[9px] font-mono tracking-[0.3em] uppercase text-muted-foreground [writing-mode:vertical-lr]">
-                            {dict.scrollDown}
-                        </span>
-                    </div>
-                </div>
+            <div className="relative z-20 flex-1 flex flex-col gap-6 sm:gap-8 xl:gap-12 justify-end w-full h-full">
 
                 <div className="w-full mt-auto flex flex-col justify-center relative z-20 mix-blend-difference">
                     <div className="overflow-hidden">
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl 3xl:text-[140px] font-black tracking-tighter leading-[0.85] text-foreground uppercase whitespace-nowrap">
-                            Kintaro
+                        <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl 3xl:text-[140px] font-black tracking-tighter sm:leading-[0.90] text-foreground uppercase whitespace-nowrap">
+                            Ilker
                             <br />
                             <span className="text-foreground/80">
-                                Portfolio
+                                Solmaz
                             </span>
                         </h1>
                     </div>
@@ -177,20 +133,20 @@ export default function Hero() {
                         </button>
 
                         <button
-                            onClick={scrollToProjects}
+                            onClick={() => setAboutOpen(true)}
                             className="w-fit group relative flex h-12 xl:h-16 cursor-pointer items-center justify-center px-6 xl:px-10 text-muted-foreground transition-all duration-500 hover:text-foreground hover:bg-secondary/15 rounded-full border border-border sm:border-transparent hover:border-border/30 backdrop-blur-sm"
                         >
                             <span className="relative z-10 text-xs xl:text-base font-semibold tracking-[0.15em] uppercase flex items-center gap-2 xl:gap-3">
-                                <Mouse className="w-3.5 xl:w-5 h-3.5 xl:h-5 opacity-50 group-hover:opacity-100 transition-opacity" />
-                                {dict.exploreProjects}
+                                <User className="w-3.5 xl:w-5 h-3.5 xl:h-5 opacity-50 group-hover:opacity-100 transition-opacity" />
+                                {dict.about}
                             </span>
                         </button>
                     </div>
                 </div>
-
-            </motion.div>
+            </div>
 
             <ContactModal open={contactOpen} onOpenChange={setContactOpen} />
+            <AboutModal open={aboutOpen} onOpenChange={setAboutOpen} />
         </section>
     );
 }

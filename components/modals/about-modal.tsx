@@ -6,7 +6,6 @@ import {
 } from "@/components/ui/dialog";
 
 import { useLanguage } from "@/providers/language-provider";
-import { useLenisModal } from "@/hooks/use-lenis-modal";
 
 interface AboutModalProps {
     open: boolean;
@@ -15,7 +14,6 @@ interface AboutModalProps {
 
 export function AboutModal({ open, onOpenChange }: AboutModalProps) {
     const { content, dict } = useLanguage();
-    useLenisModal(open);
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
@@ -28,12 +26,12 @@ export function AboutModal({ open, onOpenChange }: AboutModalProps) {
                 <div className="relative px-8 pt-8 pb-4 shrink-0">
                     <DialogHeader className="gap-3">
                         <DialogTitle className="text-2xl font-bold tracking-tight">
-                            {dict.title.about}
+                            {dict.about}
                         </DialogTitle>
                     </DialogHeader>
                 </div>
 
-                <div className="overflow-y-auto px-8 pb-8 pt-2 flex-1" data-lenis-prevent="true">
+                <div className="overflow-y-auto px-8 pb-8 pt-2 flex-1">
                     <div className="flex flex-col gap-6">
                         <div className="text-sm text-foreground/80 leading-relaxed font-light">
                             {content.about.full}
