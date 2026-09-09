@@ -14,7 +14,7 @@ import { ShineButton } from "@/components/ui/shine-button";
 interface ContactModalProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
-}
+} 
 
 export function ContactModal({ open, onOpenChange }: ContactModalProps) {
     const { content, dict } = useLanguage();
@@ -65,21 +65,35 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
                         </a>
                     </div>
 
-                    <div className="flex flex-wrap gap-3 items-center mt-6">
-                        {content.social.map((link: { label: string; href: string }) => (
-                            <div key={link.label}>
-                                <ShineButton
-                                    href={link.href}
-                                    className="h-10 px-5"
-                                    shineClassName="w-4 bg-background/20 dark:bg-background/20"
-                                >
-                                    <span className="relative z-10 flex items-center gap-2 text-xs tracking-widest uppercase font-medium">
-                                        {link.label}
-                                        <ArrowUpRight className="w-3 h-3 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                                    </span>
-                                </ShineButton>
-                            </div>
-                        ))}
+                    {content.social.length > 0 && (
+                        <div className="flex flex-wrap gap-3 items-center mt-6">
+                            {content.social.map((link: { label: string; href: string }) => (
+                                <div key={link.label}>
+                                    <ShineButton
+                                        href={link.href}
+                                        className="h-10 px-5"
+                                        shineClassName="w-4 bg-background/20 dark:bg-background/20"
+                                    >
+                                        <span className="relative z-10 flex items-center gap-2 text-xs tracking-widest uppercase font-medium">
+                                            {link.label}
+                                            <ArrowUpRight className="w-3 h-3 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                                        </span>
+                                    </ShineButton>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    <div className="mt-8 pt-4 border-t border-border/20 flex items-center justify-end">
+                        <a
+                            href="https://github.com/xkintaro"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group inline-flex items-center gap-1 text-[11px] tracking-wider uppercase text-muted-foreground/40 hover:text-foreground transition-colors duration-300 select-none"
+                        >
+                            <span>Developer kintaro</span>
+                            <ArrowUpRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </a>
                     </div>
                 </div>
 
