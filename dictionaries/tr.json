@@ -6,5 +6,16 @@
         "title": "Sayfa Bulunamadı",
         "description": "Aradığınız sayfa kaldırılmış, adı değiştirilmiş veya geçici olarak kullanım dışı kalmış olabilir.",
         "goHome": "Ana Sayfaya Dön"
+    },
+    "yks": "YKS",
+    "yksModalDescription": "Yükseköğretim Kurumları Sınavı'na kalan süre.",
+    "days": "Gün",
+    "hours": "Saat",
+    "minutes": "Dakika",
+    "seconds": "Saniye",
+    "sessions": {
+        "tyt": "TYT",
+        "ayt": "AYT",
+        "ydt": "YDT"
     }
 }
