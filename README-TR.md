@@ -34,6 +34,9 @@
   <br />
 </div>
 
+> [!NOTE]
+> Bu proje, orijinal [**xkintaro/kintarowwwards**](https://github.com/xkintaro/kintarowwwards) deposunun kişisel olarak özelleştirilmiş bir fork'udur.
+
 ## 📋 Hakkında
 
 **Kintarowwards**, üst düzey Awwwards ödüllü web sitelerinden ilham alan, açık kaynaklı ve son derece etkileşimli bir kişisel portföy şablonudur. Premium bir kullanıcı deneyimi sunmak için tasarlanmış pürüzsüz kaydırma, fizik tabanlı mikro etkileşimler, dinamik tema değiştirme ve tam çok dilli bir sisteme sahiptir. Her ayrıntı, yüksek performans ve temiz kod standartlarını korurken kalıcı bir izlenim bırakmak için işlenmiştir.

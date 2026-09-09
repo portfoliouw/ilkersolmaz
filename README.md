@@ -34,6 +34,9 @@
   <br />
 </div>
 
+> [!NOTE]
+> This project is a customized fork of the original repository: [**xkintaro/kintarowwwards**](https://github.com/xkintaro/kintarowwwards).
+
 ## 📋 About
 
 **Kintarowwards** is an open-source, highly interactive personal portfolio template inspired by top-tier Awwwards-winning websites. It features smooth scrolling, physics-based micro-interactions, dynamic theme switching, and a fully multilingual system designed to deliver a premium user experience. Every detail is crafted to leave a lasting impression while maintaining high performance and clean code standards.
